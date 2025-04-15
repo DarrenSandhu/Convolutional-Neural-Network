@@ -348,9 +348,7 @@ class Convolutional_Neural_Network:
         batch_size = X_batch.shape[0]
         self.flattened_images = self.last_conv_layer.max_pool_images.view(batch_size, -1)
         self.final_input = torch.mm(self.flattened_images, self.fully_connected_weights) + self.bias_output
-        print("Final Input: ",self.final_input.shape)
         self.final_output = self.sigmoid(self.final_input)
-        print("Final Output: ",self.final_output.shape)
         return self.final_output
     
     def backpropagation_batch(self, X, y, learning_rate):
@@ -407,7 +405,7 @@ class Convolutional_Neural_Network:
         """
         # Separate cat and dog indices
         cat_indices = torch.where(y[:, 0] == 1)[0]
-        dog_indices = torch.where(y[:, 1] == 1)[0]
+        dog_indices = torch.where(y[:, 0] == 0)[0]
         
         # Get balanced dataset
         X_cat, y_cat = X[cat_indices], y[cat_indices]
