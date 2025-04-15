@@ -5,8 +5,8 @@ import numpy as np
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TRAINING_DATA_DIR = os.path.join(BASE_DIR, 'training_data')
 
-# device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 torch.set_default_device(device)
 
@@ -56,7 +56,8 @@ dog_images, dog_labels = load_data('dog', [0])
 
 print(f"Cat images shape: {cat_images.shape}, Cat labels shape: {cat_labels.shape}")
 
-images = torch.vstack([cat_images, dog_images])
-labels = torch.vstack([cat_labels, dog_labels])
-# images = torch.vstack([cat_images, dog_images]).to(device)
-# labels = torch.vstack([cat_labels, dog_labels]).to(device)
+# images = torch.vstack([cat_images, dog_images])
+# labels = torch.vstack([cat_labels, dog_labels])
+images = torch.vstack([cat_images, dog_images]).to(device)
+labels = torch.vstack([cat_labels, dog_labels]).to(device)
+print(f"Images shape: {images.shape}, Labels shape: {labels.shape}")
