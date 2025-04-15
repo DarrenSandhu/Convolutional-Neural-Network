@@ -22,7 +22,7 @@ print("Images Shape: ",train_images.shape)
 output_nodes = 1
 target = train_labels
 print("Target Shape: ",target.shape)
-batch_size = 256
+batch_size = 4
 dropout_ratio = 0.5
 lambda_l2 = 0.00001
 strides = [1,1,1]
