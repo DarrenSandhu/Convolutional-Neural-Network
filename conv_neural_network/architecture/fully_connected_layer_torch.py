@@ -7,7 +7,7 @@ class Fully_Connected_Layer():
         self.out_features = output_size
         self.weights = torch.empty(self.in_features, self.out_features)
         if activation_func == "sigmoid":
-            torch.nn.init.xavier_normal_(self.kernels)
+            torch.nn.init.xavier_normal_(self.weights)
         else:
             if weight_init == "xavier":
                 torch.nn.init.xavier_normal_(self.weights)
